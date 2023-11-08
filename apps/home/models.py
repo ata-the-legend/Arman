@@ -44,6 +44,9 @@ class Post(models.Model):
     create_at = models.DateTimeField(_("Create at"), auto_now=False, auto_now_add=True)
     update_at = models.DateTimeField(_("Update at"), auto_now=True, auto_now_add=False)
 
+    def __str__(self) -> str:
+        return self.title
+
 
 class ShortLink(models.Model):
     shorten = models.CharField(_("shorten link"), max_length=30)
@@ -55,6 +58,9 @@ class ShortLink(models.Model):
         verbose_name_plural = _("ShortLinks")
 
     def __str__(self):
+        return self.shorten
+    
+    def __str__(self) -> str:
         return self.shorten
 
     # def get_absolute_url(self):

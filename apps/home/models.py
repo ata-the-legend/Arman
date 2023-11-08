@@ -4,11 +4,14 @@ from django.utils.translation import gettext as _
 
 class Category(models.Model):
     name = models.SlugField(_("name"))
-    parent = models.ForeignKey('self', verbose_name=_("parent"), on_delete=models.CASCADE)
+    parent = models.ForeignKey('self', verbose_name=_("parent"), on_delete=models.CASCADE, null=True, blank=True)
 
     class Meta:
         verbose_name = _("category")
         verbose_name_plural = _("categories")
+    
+    def __str__(self) -> str:
+        return self.name
 
 class Post(models.Model):
     title = models.CharField(_("title"), max_length=100)

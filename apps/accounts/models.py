@@ -10,7 +10,7 @@ from django.apps import apps
 class UserManager(BaseUserManager):
     use_in_migrations = True
 
-    def _create_user(self, username, email, password, **extra_fields):
+    def _create_user(self, username, password, **extra_fields):
         """
         Create and save a user with the given username, email, and password.
         """
@@ -34,7 +34,7 @@ class UserManager(BaseUserManager):
         return self._create_user(username, password, **extra_fields)
 
     def create_superuser(self, username, password=None, **extra_fields):
-        # extra_fields.setdefault("is_staff", True)
+        extra_fields.setdefault("is_staff", True)
         extra_fields.setdefault("is_superuser", True)
 
         if extra_fields.get("is_staff") is not True:

@@ -57,8 +57,6 @@ class ShortLink(models.Model):
         verbose_name = _("ShortLink")
         verbose_name_plural = _("ShortLinks")
 
-    def __str__(self):
-        return self.shorten
     
     def __str__(self) -> str:
         return self.shorten
